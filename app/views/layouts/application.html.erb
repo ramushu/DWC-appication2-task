@@ -6,11 +6,56 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav>
+        <div class="header-contents">
+          <a class="header-top header-left" href="/">
+            Bookers
+          </a>
+          <button class="header-button header-right" type="button" data-toggle="collapse" data-target="#header-collapse" aria-cotrols="header-collapse" aria-expanded="false">
+            <span class="header-button-icon"></span>
+          </button>
+          <div class="header-list header-left" id="header-collapse">
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "Users", about_path %>
+                </li>
+                <li>
+                  <%= link_to "Books", about_path %>
+                </li>
+                <li>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "About", about_path %>
+                </li>
+                <li>
+                  <%= link_to "Sign up", new_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to "Log in", new_user_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+      <div class="footer-text">
+      <p>CopyRight Infratop.inc</p>
+      </div>
+    </footer>
   </body>
 </html>
