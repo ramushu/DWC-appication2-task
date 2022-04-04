@@ -12,38 +12,52 @@
 
   <body>
     <header>
-      <nav>
-        <div class="header-contents">
-          <a class="header-top header-left" href="/">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">
             Bookers
           </a>
-          <button class="header-button header-right" type="button" data-toggle="collapse" data-target="#header-collapse" aria-cotrols="header-collapse" aria-expanded="false">
-            <span class="header-button-icon"></span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="header-list header-left" id="header-collapse">
-            <ul>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
               <li>
-                <a href="/">Home</a>
+                <%= link_to "/", class: "nav-link text-light" do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
               </li>
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to "Users", about_path %>
+                  <%= link_to about_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-users"></i> Users
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Books", about_path %>
+                  <%= link_to about_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-book-open"></i> Books
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                  <%= link_to destroy_user_session_path, class: "nav-link text-light", method: :delete do %>
+                    <i class="fas fa-sign-out-alt"></i> logout
+                  <% end %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to "About", about_path %>
+                  <%= link_to about_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-link"></i> About
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Sign up", new_user_registration_path %>
+                  <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-user-plus"></i> sign up
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "Log in", new_user_session_path %>
+                  <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                    <i class="fas fa-sign-in-alt"></i> login
+                  <% end %>
                 </li>
               <% end %>
             </ul>
@@ -53,8 +67,12 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="footer-text">
-      <p>CopyRight Infratop.inc</p>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
       </div>
     </footer>
   </body>
