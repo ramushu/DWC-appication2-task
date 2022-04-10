@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <%= render 'book', book: @book, user: @user %>
+    <%= render 'book', book: @book, user: @bookx.user %>
 
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
@@ -10,8 +10,8 @@
           <tr>
             <td>
               <%= link_to user_path(@bookx.user.id) do %>
-                <%= image_tag @bookx.user.get_image,xxx size: "100x100" %><br>
-                <%= @userx.name %>
+                <%= image_tag @bookx.user.get_image, size: "100x100" %><br>
+                <%= @bookx.user.name %>
               <% end %>
             </td>
             <td>

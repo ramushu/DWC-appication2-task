@@ -14,23 +14,25 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to user_path(@bookx.user.id) do %>
-                <%= image_tag @bookx.user.get_image, size: "100x100" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to book_path(@bookx.id) do %>
-                <%= @bookx.title %>
-              <% end %>
-            </td>
-            <td>
-              <%= @bookx.body %>
-            </td>
-          </tr>
-        </tbody>
+        <% @books.each do |book| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(book.user.id) do %>
+                  <%= image_tag book.user.get_image, size: "100x100" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= book.body %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
       </table>
     </div>
 

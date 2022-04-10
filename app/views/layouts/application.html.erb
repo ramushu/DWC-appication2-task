@@ -72,7 +72,16 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+      <% flash.each do |message_type, message| %>
+        <% if message_type == "notice" %>
+          <p><%= message %></p>
+        <% else %>
+          <p><%= message %></p>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">
